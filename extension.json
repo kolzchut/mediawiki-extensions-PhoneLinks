@@ -1,0 +1,33 @@
+{
+	"name": "PhoneLinks",
+	"version": "0.0.1",
+	"author": [
+		"Dror S. [FFS] ([http://www.kolzchut.org.il Kol-Zchut])"
+	],
+	"url": "https://github.com/kolzchut/mediawiki-extensions-PhoneLinks",
+	"descriptionmsg": "phonelinks-desc",
+	"license-name": "GPL-2.0+",
+	"type": "other",
+	"AutoloadClasses": {
+		"PhoneLinksHooks": "PhoneLinks.hooks.php"
+	},
+	"config": {
+		"_prefix": "wgPhoneLinks",
+		"HideOnMobile": false,
+		"HideOnDesktop": true
+	},
+	"ConfigRegistry": {
+		"wgPhoneLinks": "PhoneLinksHooks::makeConfig"
+	},
+	"Hooks": {
+		"LinkerMakeExternalLink": [
+			"PhoneLinksHooks::onLinkerMakeExternalLink"
+		]
+	},
+	"MessagesDirs": {
+		"PhoneLinks": [
+			"i18n"
+		]
+	},
+	"manifest_version": 1
+}
