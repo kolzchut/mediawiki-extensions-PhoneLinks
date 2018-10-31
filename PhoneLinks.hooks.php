@@ -26,7 +26,7 @@ class PhoneLinksHooks {
 	}
 
 	public static function onLinkerMakeExternalLink( &$url, &$text, &$link, &$attribs ) {
-		if ( substr( $url, 0, 4 ) !== 'tel:' ) {
+		if ( parse_url( $url, PHP_URL_SCHEME ) !== 'tel' ) {
 			return true;
 		}
 
