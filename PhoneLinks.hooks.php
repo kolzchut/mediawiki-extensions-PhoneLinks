@@ -57,7 +57,7 @@ class PhoneLinksHooks {
 
 
 		if( $disableLinks ) {
-			$link = Html::element( 'span', array( 'class' => 'phonenum phonenum-unlinked' ), $text );
+			$link = Html::rawElement( 'span', [ 'class' => 'phonenum phonenum-unlinked' ], $text );
 			return false;
 		}
 
