@@ -1,33 +1,44 @@
 {
 	"name": "PhoneLinks",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"author": [
 		"Dror S. [FFS] ([http://www.kolzchut.org.il Kol-Zchut])"
 	],
 	"url": "https://github.com/kolzchut/mediawiki-extensions-PhoneLinks",
 	"descriptionmsg": "phonelinks-desc",
-	"license-name": "GPL-2.0+",
+	"license-name": "GPL-2.0-or-later",
 	"type": "other",
-	"AutoloadClasses": {
-		"PhoneLinksHooks": "PhoneLinks.hooks.php"
+	"requires": {
+		"MediaWiki": ">= 1.43.0"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\PhoneLinks\\": "src/"
 	},
 	"config": {
-		"_prefix": "wgPhoneLinks",
-		"HideOnMobile": false,
-		"HideOnDesktop": true
+		"PhoneLinksHideOnMobile": {
+			"value": false,
+			"description": "Whether to hide phone links on mobile devices"
+		},
+		"PhoneLinksHideOnDesktop": {
+			"value": true,
+			"description": "Whether to hide phone links on desktop devices"
+		}
 	},
-	"ConfigRegistry": {
-		"wgPhoneLinks": "PhoneLinksHooks::makeConfig"
+	"HookHandlers": {
+		"main": {
+			"class": "MediaWiki\\Extension\\PhoneLinks\\Hooks",
+			"services": [
+				"MainConfig"
+			]
+		}
 	},
 	"Hooks": {
-		"LinkerMakeExternalLink": [
-			"PhoneLinksHooks::onLinkerMakeExternalLink"
-		]
+		"LinkerMakeExternalLink": "main"
 	},
 	"MessagesDirs": {
 		"PhoneLinks": [
 			"i18n"
 		]
 	},
-	"manifest_version": 1
+	"manifest_version": 2
 }
