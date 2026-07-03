@@ -14,6 +14,15 @@
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\PhoneLinks\\": "src/"
 	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "WikiRights/PhoneLinks/resources"
+	},
+	"ResourceModules": {
+		"ext.phoneLinks.styles": {
+			"styles": "ext.phoneLinks.styles.less"
+		}
+	},
 	"config": {
 		"PhoneLinksHideOnMobile": {
 			"value": false,
@@ -33,7 +42,8 @@
 		}
 	},
 	"Hooks": {
-		"LinkerMakeExternalLink": "main"
+		"LinkerMakeExternalLink": "main",
+		"BeforePageDisplay": "main"
 	},
 	"MessagesDirs": {
 		"PhoneLinks": [
