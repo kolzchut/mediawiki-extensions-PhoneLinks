@@ -1,0 +1,31 @@
+/**
+ * PhoneLinks: reveal a tappable tel: link only on devices that can place calls.
+ *
+ * Both variants (a real tel: link and a plain-text span) are always present in
+ * the rendered HTML, which is therefore identical for every device and stays
+ * safely cacheable by a shared CDN. CSS reveals the right one by input
+ * *capability* — not by User-Agent sniffing or viewport width — so a
+ * mouse-driven touchscreen laptop is correctly treated as desktop.
+ *
+ * Toggling with `display: none` (rather than `pointer-events`) keeps the hidden
+ * variant out of the tab order and the accessibility tree, so no dead,
+ * keyboard-focusable link is left behind on desktop.
+ */
+
+/* Desktop-first default: plain text is shown, the tel: link is hidden. */
+.ext-phonelinks-dialable {
+	display: none;
+}
+
+/* Touch-primary, non-hovering devices (phones, tablets) can dial. A browser
+ * that does not support interaction media queries simply keeps the default
+ * above — the safe, desktop (plain-text) rendering. */
+@media ( hover: none ) and ( pointer: coarse ) {
+	.ext-phonelinks-dialable {
+		display: inline;
+	}
+
+	.ext-phonelinks-not-dialable {
+		display: none;
+	}
+}
