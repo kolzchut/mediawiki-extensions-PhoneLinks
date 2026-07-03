@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## Version 1.1.0 (2026-07-03)
 - Decide link-vs-plain-text on the client by input capability instead of
   server-side device detection, so a page's HTML no longer varies by device
   and stays safe to cache behind a shared CDN. Removes the runtime dependency

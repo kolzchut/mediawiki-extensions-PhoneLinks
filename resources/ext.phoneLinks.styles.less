@@ -13,17 +13,19 @@
  */
 
 /* Desktop-first default: plain text is shown, the tel: link is hidden. */
-.phonenum-when-dialable {
+.ext-phonelinks-dialable {
 	display: none;
 }
 
-/* Touch-primary, non-hovering devices (phones, tablets) can dial. */
+/* Touch-primary, non-hovering devices (phones, tablets) can dial. A browser
+ * that does not support interaction media queries simply keeps the default
+ * above — the safe, desktop (plain-text) rendering. */
 @media ( hover: none ) and ( pointer: coarse ) {
-	.phonenum-when-dialable {
+	.ext-phonelinks-dialable {
 		display: inline;
 	}
 
-	.phonenum-when-not-dialable {
+	.ext-phonelinks-not-dialable {
 		display: none;
 	}
 }

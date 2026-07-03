@@ -78,8 +78,8 @@ class Hooks implements LinkerMakeExternalLinkHook, BeforePageDisplayHook {
 		// Hidden on one device class only: emit BOTH the tel: link and a
 		// plain-text span, each gated by the capability media query in
 		// ext.phoneLinks.styles. The rendered HTML is device-agnostic.
-		$linkVisibility = $hideOnDesktop ? 'phonenum-when-dialable' : 'phonenum-when-not-dialable';
-		$textVisibility = $hideOnDesktop ? 'phonenum-when-not-dialable' : 'phonenum-when-dialable';
+		$linkVisibility = $hideOnDesktop ? 'ext-phonelinks-dialable' : 'ext-phonelinks-not-dialable';
+		$textVisibility = $hideOnDesktop ? 'ext-phonelinks-not-dialable' : 'ext-phonelinks-dialable';
 
 		$anchorAttribs = [ 'href' => $url ] + $attribs;
 		$anchorAttribs['class'] = trim( $attribs['class'] . ' ' . $linkVisibility );
